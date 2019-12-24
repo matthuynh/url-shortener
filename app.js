@@ -5,15 +5,21 @@ const app = express();
 // Connect to database
 connect_db();
 
-app.get('/', function(req, res) {
-  res.send('Hello World!');
-});
+app.use(express.json());
 
-app.get('/about', function(req, res) {
-  res.send('yeetcode');
-});
+// Define Express middleware routes
+app.use('/', require('./routes/index'));
+app.use('/api/url', require('./routes/url'));
 
-app.use(express.json({ extented: false }));
+// app.get('/', function(req, res) {
+//   res.send('Hello World!');
+// });
+
+// app.get('/about', function(req, res) {
+//   res.send('yeetcode');
+// });
+
+// app.use(express.json({ extended: false }));
 
 const PORT = 3000;
 app.listen(PORT, function() {
