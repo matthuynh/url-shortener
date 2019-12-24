@@ -1,0 +1,30 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "A url shortener",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthuynh/url-shortener.git"
+  },
+  "author": "Matthew Huynh",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/matthuynh/url-shortener/issues"
+  },
+  "homepage": "https://github.com/matthuynh/url-shortener#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.3",
+    "shortid": "^2.2.15",
+    "valid-url": "^1.0.9"
+  }
+}

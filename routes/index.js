@@ -1,0 +1,1 @@
+// Redirects short URLs to long URLs
