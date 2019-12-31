@@ -4,8 +4,10 @@ const router = express.Router();
 
 const url_schema = require("../models/url");
 
-// @route       GET /:hash
-// @desc        Redirect to the original URL
+/**
+ * @route         GET /:hash
+ * @description   Redirect to the original URL
+ */
 router.get("/:hash", async (req, res) => {
 	try {
 		const url = await url_schema.findOne({ urlHash: req.params.hash });

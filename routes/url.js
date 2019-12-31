@@ -7,14 +7,18 @@ const config = require('config');
 
 const url_schema = require('../models/url');
 
-// POST to /api/url/shorten/
 /**
- * 
+ * @route       POST /api/url/shorten
+ * @description Given a long URL, create short URL
  */
 router.post('/shorten', async(req, res) => {
-  console.log(req.body);
-  const { longUrl } = await req.body; // syntax ???
+  // const { longUrl } = await req.body; // syntax ???
   const baseUrl = config.get('baseUrl');
+
+  // const reqBody = await req.body;
+  // console.log("Request body is");
+  // console.log(reqBody);
+  const longUrl = await req.body;
   
   // Verify that the base URL is valid
   if (!validUrl.isUri(baseUrl)) {
@@ -23,8 +27,9 @@ router.post('/shorten', async(req, res) => {
  
   // Generate the URL hash
   // TODO: Check to see if this URL hash already exists
+  // TODO: Investigate further options with shortID
   const urlHash = shortID.generate();
-  
+
   // Verify that the long URL is valid
   if (validUrl.isUri(longUrl)) {
     console.log("The long URL is valid");
@@ -59,7 +64,8 @@ router.post('/shorten', async(req, res) => {
   } 
   // The long URL is not valid
   else {
-    res.statusMessage(401).json('Invalid long URL');
+    console.log("The long URL is not valid");
+    res.status(401).json('Invalid long URL');
   }
   
   // TODO: Allow the user to generate their own short URL
