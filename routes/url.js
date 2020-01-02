@@ -1,10 +1,8 @@
-// Stores POST route to create URL and insert into database
 const express = require('express');
 const router = express.Router();
 const validUrl = require('valid-url');
 const shortID = require('shortid');
 const config = require('config');
-
 const url_schema = require('../models/url');
 
 /**
@@ -12,23 +10,25 @@ const url_schema = require('../models/url');
  * @description Given a long URL, create short URL
  */
 router.post('/shorten', async(req, res) => {
-  // const { longUrl } = await req.body; // syntax ???
+  // const { longUrl } = req.body;
   const baseUrl = config.get('baseUrl');
 
-  // const reqBody = await req.body;
+  let longUrl = req.body;
+  longUrl = longUrl.toLowerCase();
   // console.log("Request body is");
-  // console.log(reqBody);
-  const longUrl = await req.body;
-  
+  // console.log(req.body);
+
   // Verify that the base URL is valid
   if (!validUrl.isUri(baseUrl)) {
     return res.status(400).json('Invalid base url');
   }
  
   // Generate the URL hash
-  // TODO: Check to see if this URL hash already exists
-  // TODO: Investigate further options with shortID
-  const urlHash = shortID.generate();
+  let urlHash, urlHashExists;
+  do {
+    urlHash = shortID.generate();
+    urlHashExists = await url_schema.findOne({ urlHash });
+  } while(urlHashExists);
 
   // Verify that the long URL is valid
   if (validUrl.isUri(longUrl)) {
@@ -54,7 +54,6 @@ router.post('/shorten', async(req, res) => {
           date: new Date()
         });
         await url.save();
-        console.log("Saved to mongo");
         res.json(url);
       }
     } catch (err) {
@@ -67,8 +66,6 @@ router.post('/shorten', async(req, res) => {
     console.log("The long URL is not valid");
     res.status(401).json('Invalid long URL');
   }
-  
-  // TODO: Allow the user to generate their own short URL
 });
 
 module.exports = router;

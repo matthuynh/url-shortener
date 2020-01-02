@@ -36,7 +36,7 @@ function FormComponent(props) {
 
         <button 
           type="button" 
-          onClick={props.handleSubmit}
+					onClick={props.handleSubmit}
         >
         Generate my URL!
         </button>

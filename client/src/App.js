@@ -9,6 +9,7 @@ class App extends React.Component {
       this.state = {
           longURL: "",
           shortURL: "",
+          submitted: false,
           useCustomShortURL: false,
           customShortURL: "http://localhost:5000/"
       }
@@ -17,15 +18,10 @@ class App extends React.Component {
       this.handleReturnToHome = this.handleReturnToHome.bind(this);
   }
   
-  componentDidMount() {
-
-  }
-  
   // Given a longURL, get a shortURL from backend
   getShortURL = async (longURL) => {
     // POST request to API with the longURL
     let response;
-    
     try {
       response = await fetch('/api/url/shorten/', {
         method: 'POST',
@@ -59,9 +55,9 @@ class App extends React.Component {
     }
   }
 
+  // User modified any form elements (not including the 'Submit' button)
   handleChange(event) {
-      console.log("Form element is " + event.target.name);
-      // Figure out which of the form elements triggered handleChange()
+      // Figure out which of the form elements triggered handleChange(). Update state accordingly
       if (event.target.type === "checkbox") {
           this.setState({
               [event.target.name]: event.target.checked
@@ -71,26 +67,26 @@ class App extends React.Component {
               [event.target.name]: event.target.value
           })
       }
-      // console.log(event.target.value);
-      // this.callApi();
   }
   
-  // Return a short URL for the user
+  // User clicked the 'Submit' button
   handleSubmit(){
       console.log("Pressed 'Submit' button");
       this.setState({submitted: true});
-
       this.getShortURL(this.state.longURL);
   }
 
+  // User clicks on the 'Return to Home' button
   handleReturnToHome(){ 
-    console.log("Pressed 'Go Back' button");
-
-    this.setState({submitted: false});
+    this.setState({
+      submitted: false,
+      shortURL: "",
+      longURL: ""
+      });
   }
   
   render() {
-    // This is the default page shown to the user
+    // By default, renders the home page to the user
     if (!this.state.submitted) {
       return (
         <div>
@@ -102,7 +98,7 @@ class App extends React.Component {
         </div>
       )
     }
-    // Display result to user. They can choose to generate a new short URL 
+    // Display result to user. They can choose to input another long URL 
     return (
       <div>
         <ResultComponent
