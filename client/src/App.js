@@ -41,29 +41,14 @@ class App extends React.Component {
 
     // User entered in a valid long URL 
     const responseBody = await response.json();
-    console.log(responseBody);
-    if (response.status === 200) {
-      console.log("You entered a valid URL");
-      this.setState({ shortURL: responseBody.shortUrl});
-    } 
+    // console.log(responseBody);
+    if (response.status === 200) this.setState({ shortURL: responseBody.shortUrl});
     // Some other error
     else {
-      // User's custom short URL already exists
-      if (responseBody.errorCode === 1001) {
-        this.setState({ resultErrorMessage: "Your custom short URL is in an invalid format. Try another short URL."})
-      }
-      else if (responseBody.errorCode === 1002) {
-        this.setState({ resultErrorMessage: "Your custom short URL already exists. Try another short URL." })
-      }
-      // User entered in an invalid long URL format
-      else if (responseBody.errorCode === 1004) {
-        this.setState({ resultErrorMessage: "You entered in an invalid long URL. Try another long URL." })
-      } 
-      // Some other error (likely internal server error)
-      else {
-        console.log("Some other error");
-        this.setState({ resultErrorMessage: "Something is wrong on our end. Sorry! "})
-      }
+      if (responseBody.errorCode === 1001) this.setState({ resultErrorMessage: "Your custom short URL '" + this.state.customShortURL + "' is in an invalid format. Try another short URL."});
+      else if (responseBody.errorCode === 1002) this.setState({ resultErrorMessage: "Your custom short URL already exists. Try another short URL." });
+      else if (responseBody.errorCode === 1004) this.setState({ resultErrorMessage: "You entered in an invalid long URL. Try another long URL." });
+      else this.setState({ resultErrorMessage: "Internal Server Error. Something is wrong on our end. Sorry! "});
     }
   }
 
@@ -91,9 +76,12 @@ class App extends React.Component {
   // User clicks on the 'Return to Home' button
   handleReturnToHome(){ 
     this.setState({
-      submitted: false,
+      longURL: "",
       shortURL: "",
-      longURL: ""
+      submitted: false,
+      useCustomShortURL: false,
+      customShortURL: "",
+      resultErrorMessage: ""
       });
   }
   

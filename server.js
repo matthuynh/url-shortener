@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 // Define Express middleware routes
 app.use('/', require('./routes/index'));
+app.use('/preview', require('./routes/index'));
 app.use('/api/url', require('./routes/url'));
 
 const PORT = 5000;

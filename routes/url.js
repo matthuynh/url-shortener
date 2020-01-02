@@ -35,7 +35,7 @@ router.post('/shorten', async(req, res) => {
     urlHash = req.body.customShortURL;
     
     // Check if custom short URL is of the correct format
-    if (!urlChecker.validateShortURL(urlHash)) {
+    if (!urlChecker.validateShortURLHash(urlHash)) {
       return res.status(400).json({
         errorCode: 1001,
         errorMessage: 'Custom short URL is in an invalid format'
@@ -58,7 +58,7 @@ router.post('/shorten', async(req, res) => {
   }
 
   // Verify that the long URL is valid
-  if (validUrl.isUri(longUrl)) {
+  if (urlChecker.validateLongURL(longUrl)) {
     console.log("The long URL is valid");
     try {
       let url = await url_schema.findOne({ 

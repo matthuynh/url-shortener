@@ -17,5 +17,5 @@ function ResultComponent(props) {
 		</main>
 	);
 }
-
+  
 export default ResultComponent;
