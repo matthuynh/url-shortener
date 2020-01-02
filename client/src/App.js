@@ -11,7 +11,8 @@ class App extends React.Component {
           shortURL: "",
           submitted: false,
           useCustomShortURL: false,
-          customShortURL: "http://localhost:5000/"
+          customShortURL: "",
+          resultErrorMessage: ""
       }
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,39 +20,50 @@ class App extends React.Component {
   }
   
   // Given a longURL, get a shortURL from backend
-  getShortURL = async (longURL) => {
+  getShortURL = async () => {
     // POST request to API with the longURL
     let response;
     try {
       response = await fetch('/api/url/shorten/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'text/plain'
+          'Content-Type': 'application/json'
         },
-        body: longURL
+        body: JSON.stringify({ 
+          longURL: this.state.longURL,
+          useCustomShortURL: this.state.useCustomShortURL,
+          customShortURL: this.state.customShortURL
+        }),
       });
     } catch (error) {
       console.error(error);
     }
 
     // User entered in a valid long URL 
+    const responseBody = await response.json();
+    console.log(responseBody);
     if (response.status === 200) {
       console.log("You entered a valid URL");
-      const data = await response.json();
-      this.setState({ shortURL: data.shortUrl});
-      console.log(data);
+      this.setState({ shortURL: responseBody.shortUrl});
     } 
     // Some other error
     else {
-      // User entered in an invalid long URL
-      if (response.status === 401) {
-        console.log("Your long URL is incorrect");
+      // User's custom short URL already exists
+      if (responseBody.errorCode === 1001) {
+        this.setState({ resultErrorMessage: "Your custom short URL is in an invalid format. Try another short URL."})
+      }
+      else if (responseBody.errorCode === 1002) {
+        this.setState({ resultErrorMessage: "Your custom short URL already exists. Try another short URL." })
+      }
+      // User entered in an invalid long URL format
+      else if (responseBody.errorCode === 1004) {
+        this.setState({ resultErrorMessage: "You entered in an invalid long URL. Try another long URL." })
       } 
       // Some other error (likely internal server error)
       else {
         console.log("Some other error");
+        this.setState({ resultErrorMessage: "Something is wrong on our end. Sorry! "})
       }
-
     }
   }
 
@@ -73,7 +85,7 @@ class App extends React.Component {
   handleSubmit(){
       console.log("Pressed 'Submit' button");
       this.setState({submitted: true});
-      this.getShortURL(this.state.longURL);
+      this.getShortURL();
   }
 
   // User clicks on the 'Return to Home' button

@@ -33,7 +33,8 @@ function FormComponent(props) {
 					Use my own custom short URL
 				</label>
 				<br />
-
+				Requirements: your short URL must be at least 4 characters long, and may be alphanumeric (a-zA-Z0-9)
+				<br />
         <button 
           type="button" 
 					onClick={props.handleSubmit}

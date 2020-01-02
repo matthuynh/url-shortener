@@ -6,9 +6,8 @@ const app = express();
 // Connect to database
 connect_db();
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true}));
-app.use(bodyParser.text());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
 
 // Define Express middleware routes
 app.use('/', require('./routes/index'));

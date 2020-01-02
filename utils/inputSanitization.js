@@ -1,8 +1,17 @@
-// Match longURLs with a valid TLD
-async function validateURL(longURL) {
+// Use regex to match longURLs with a valid TLD
+function validateLongURL(longURL) {
   // Note: this regex is NOT comprehensive and is meant as a basic sanity check
-  let regex = /(www\.)?.+\.[a-z]+/;
-  return regex.test(longURL)
+  let regex = /(http:\/\/|https:\/\/){0,1}(www\.)?.+\.[a-z]+/;
+  return regex.test(longURL);
 };
 
-module.exports.validateURL
+// Check to see if a user's custom short URL is valid
+function validateShortURL(shortURL) {
+  let regex = /[0-9a-zA-Z]+/
+  return (shortURL.length > 4 && regex.test(shortURL))
+}
+
+module.exports = {
+  validateLongURL,
+  validateShortURL
+}
