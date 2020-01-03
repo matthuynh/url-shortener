@@ -40,13 +40,13 @@ function ResultComponent(props) {
 									}}
 									onClick={props.handleClickCopy}
 								>
-									Copy to Clipboard
+									Copy to clipboard
 								</button>
 							</CopyToClipboard>
 
 							{/* 'Go back' button */}
 							<button
-								class="button"
+								class="button is-primary is-outlined"
 								type="button"
 								onClick={props.handleReturnToHome}
 							>

@@ -27,7 +27,7 @@ function FormComponent(props) {
 										<div class="column is-9">
 											{/* Textfield input for long URL */}
 											<input
-												class="input is-primary is-medium is-small-mobile"
+												class="input is-roundedis-primary is-medium is-small-mobile"
 												type="text"
 												name="longURL"
 												placeholder="Enter a URL to shrink"

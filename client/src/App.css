@@ -43,3 +43,7 @@
 .content {
   word-wrap: break-word;
 }
+
+input::placeholder {
+  font-size: 0.9em;
+}
