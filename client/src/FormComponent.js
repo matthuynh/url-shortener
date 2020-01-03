@@ -10,10 +10,10 @@ function FormComponent(props) {
 					{/* Page logo and title */}
 					<section class="section" id="title-section">
 						<h1 class="title has-text-centered"> Shrinkly </h1>
-						<h6 class="subtitle is-6 has-text-centered">
+						{/* <h6 class="subtitle is-6 has-text-centered">
 							{" "}
 							a URL shortener{" "}
-						</h6>
+						</h6> */}
 					</section>
 					{/* End of page logo and title */}
 
@@ -27,7 +27,7 @@ function FormComponent(props) {
 										<div class="column is-9">
 											{/* Textfield input for long URL */}
 											<input
-												class="input is-roundedis-primary is-medium is-small-mobile"
+												class="input is-primary is-medium is-small-mobile"
 												type="text"
 												name="longURL"
 												placeholder="Enter a URL to shrink"
