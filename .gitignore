@@ -1,5 +1,8 @@
 notes.txt
 
+# config folder
+**/config
+
 # testing
 **/coverage
 

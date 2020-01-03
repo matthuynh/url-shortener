@@ -16,7 +16,7 @@ function FormComponent(props) {
 							<section class="section">
 								<div class="container">
 									<div class="columns is-mobile is-multiline is-gapless">
-										<div class="column is-10">
+										<div class="column is-9 is-8-mobile">
 											<input
 												class="input is-primary is-medium"
 												type="text"
@@ -26,13 +26,13 @@ function FormComponent(props) {
 												onChange={props.handleChange}
 											/>
 										</div>
-										<div class="column is-2 is-1-mobile">
+										<div class="column is-3 is-4-mobile">
 											<button
-												class="button is-medium is-small-mobile"
+												class="button is-medium is-fullwidth"
 												type="button"
 												onClick={props.handleSubmit}
 											>
-												Generate
+												<p class="is-size-6-mobile">Generate</p>
 											</button>
 										</div>
 									</div>
