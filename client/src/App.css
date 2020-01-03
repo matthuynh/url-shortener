@@ -1,8 +1,45 @@
-/* Customize styling for footer */
-footer{
+/* Customize margin for the <level> Bulma element (holds the two checkboxes) */
+.level:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+/* Customize margin for checkbox */
+.checkbox {
+  margin-top: 0.3rem;
+}
+
+/* Customize font size of title "Shrinkly" */
+.title {
+  font-size: calc(5em + 1vmin);
+}
+
+/* Change padding of title section */
+#title-section {
+  padding: 1.25rem 1.5rem;
+}
+
+#custom-url-notification {
+  background-color: #d1fff3;
+  word-wrap: break-word;
+}
+
+#preview-notification {
+  background-color: #c7f4ff;
+  word-wrap: break-word;
+}
+
+/* 
+.footer {
   padding: 2rem 1rem 2rem !important;
   bottom: 0;
   position: absolute;
   width: 100%
+} */
+
+#result-main {
+  padding: 10rem 2rem 4rem 2rem;
 }
 
+.content {
+  word-wrap: break-word;
+}
