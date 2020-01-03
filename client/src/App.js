@@ -11,7 +11,6 @@ class App extends React.Component {
           longURL: "",
           shortURL: "",
           submitted: false,
-          useExtraOptions: false,
           useCustomShortURL: false,
           customShortURL: "",
           resultErrorMessage: ""

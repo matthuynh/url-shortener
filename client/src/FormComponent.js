@@ -25,14 +25,14 @@ function FormComponent(props) {
 												class="input is-primary is-medium"
 												type="text"
 												name="longURL"
-												placeholder="Enter the URL that you want to shorten"
+												placeholder="Enter the URL that you wish to shorten"
 												value={props.data.longURL}
 												onChange={props.handleChange}
 											/>
 											{/* Checkbox for "More options" */}
-											<label class="checkbox">
+											<label class="radio">
 												<input
-													type="checkbox"
+													type="radio"
 													name="useExtraOptions"
 													onChange={
 														props.handleChange
@@ -45,37 +45,75 @@ function FormComponent(props) {
 												More options
 											</label>
 											<br />
-											{/* Checkbox input for custom short URL textfield */}
-											<label>
-												<input
-													type="checkbox"
-													name="useCustomShortURL"
-													onChange={
-														props.handleChange
-													}
-													checked={
-														props.data
-															.useCustomShortURL
-													}
-													style={{
-														display:
-															!props.data
-																.useExtraOptions &&
-															"none"
-													}}
-												/>
-												<span
-													style={{
-														display:
-															!props.data
-																.useExtraOptions &&
-															"none"
-													}}
-												>
-													{" "}
-													Generate custom URL
-												</span>
-											</label>
+
+											<nav class="level is-mobile">
+												{/* Checkbox input for custom short URL textfield */}
+												<div class="level-left">
+													<label>
+														<input
+															type="checkbox"
+															name="useCustomShortURL"
+															onChange={
+																props.handleChange
+															}
+															checked={
+																props.data
+																	.useCustomShortURL
+															}
+															style={{
+																display:
+																	!props.data
+																		.useExtraOptions &&
+																	"none"
+															}}
+														/>
+														<span
+															style={{
+																display:
+																	!props.data
+																		.useExtraOptions &&
+																	"none"
+															}}
+														>
+															{" "}
+															Generate custom URL
+														</span>
+													</label>
+												</div>
+												{/* Checkbox input for "Preview" option */}
+												<div class="level-right">
+													<label>
+														<input
+															type="checkbox"
+															name="useCustomShortURL"
+															onChange={
+																props.handleChange
+															}
+															checked={
+																props.data
+																	.useCustomShortURL
+															}
+															style={{
+																display:
+																	!props.data
+																		.useExtraOptions &&
+																	"none"
+															}}
+														/>
+														<span
+															style={{
+																display:
+																	!props.data
+																		.useExtraOptions &&
+																	"none"
+															}}
+														>
+															{" "}
+															Preview
+														</span>
+													</label>
+												</div>
+											</nav>
 											<br />
 
 											{/* Textfield input for "Use Custom Short URL" option */}
@@ -98,7 +136,7 @@ function FormComponent(props) {
 														class="input is-small is-expanded is-fullwidth"
 														type="text"
 														name="customShortURL"
-														placeholder="Enter the custom URL that wish to use"
+														placeholder="custom URL"
 														value={
 															props.data
 																.customShortURL
@@ -144,8 +182,20 @@ function FormComponent(props) {
 			<footer class="footer">
 				<div class="content has-text-centered">
 					<p>
+						Made with{" "}
+						{
+							<span role="img" aria-label="coffee">
+								☕
+							</span>
+						}
+					</p>
+					<p>
 						See the source code on
-						<a href="https://github.com/matthuynh/url-shortener"> GitHub</a>.
+						<a href="https://github.com/matthuynh/url-shortener">
+							{" "}
+							GitHub
+						</a>
+						.
 					</p>
 				</div>
 			</footer>
