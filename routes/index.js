@@ -17,7 +17,7 @@ router.get("/:hash", async (req, res) => {
 		} else {
 			// console.log(url);
 			return res.redirect(config.get("baseUrl"));
-			//// return res.status(404).json('No url found');
+			// return res.status(404).json('No url found');
 		}
 	} catch (err) {
 		console.error(err);
