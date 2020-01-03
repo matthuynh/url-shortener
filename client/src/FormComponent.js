@@ -5,24 +5,24 @@ function FormComponent(props) {
 	return (
 		<main>
 			{/* Main section */}
-			<section class="section">
-				<div class="container">
+			<section className="section">
+				<div className="container">
 					{/* Page logo and title */}
-					<section class="section">
+					<section className="section">
 						<h1 className="title has-text-centered"> Shrinkly </h1>
 					</section>
 					{/* End of page logo and title */}
 
 					{/* Input form */}
-					<section class="section">
+					<section className="section">
 						<form>
-							<section class="section">
-								<div class="container">
-									<div class="columns is-mobile is-gapless">
-										<div class="column is-9">
+							<section className="section">
+								<div className="container">
+									<div className="columns is-mobile is-gapless">
+										<div className="column is-9">
 											{/* Textfield input for long URL */}
 											<input
-												class="input is-primary is-medium"
+												className="input is-primary is-medium"
 												type="text"
 												name="longURL"
 												placeholder="Enter the URL that you want to shorten"
@@ -30,7 +30,7 @@ function FormComponent(props) {
 												onChange={props.handleChange}
 											/>
 											{/* Checkbox for "More options" */}
-											<label class="checkbox">
+											<label className="checkbox">
 												<input
 													type="checkbox"
 													name="useExtraOptions"
@@ -79,23 +79,25 @@ function FormComponent(props) {
 											<br />
 
 											{/* Textfield input for "Use Custom Short URL" option */}
-											<div class="field has-addons">
-												<p class="control">
+											<div className="field has-addons">
+												<p className="control">
 													<span
-														class="button is-small is-static"
+														className="button is-small is-static"
 														style={{
 															display:
+																(!props.data
+																	.useCustomShortURL ||
 																!props.data
-																	.useCustomShortURL &&
+																	.useExtraOptions) &&
 																"none"
 														}}
 													>
 														https://localhost:3000/
 													</span>
 												</p>
-												<p class="control is-fullwidth is-expanded">
+												<p className="control is-fullwidth is-expanded">
 													<input
-														class="input is-small is-expanded is-fullwidth"
+														className="input is-small is-expanded is-fullwidth"
 														type="text"
 														name="customShortURL"
 														placeholder="Enter the custom URL that wish to use"
@@ -108,8 +110,10 @@ function FormComponent(props) {
 														}
 														style={{
 															display:
+																(!props.data
+																	.useCustomShortURL ||
 																!props.data
-																	.useCustomShortURL &&
+																	.useExtraOptions) &&
 																"none"
 														}}
 													/>
@@ -118,13 +122,13 @@ function FormComponent(props) {
 										</div>
 										{/* End of column for textfield and extra options */}
 										{/* Input for Submit button */}
-										<div class="column is-3">
+										<div className="column is-3">
 											<button
-												class="button is-primary is-medium is-fullwidth"
+												className="button is-primary is-medium is-fullwidth"
 												type="button"
 												onClick={props.handleSubmit}
 											>
-												<p class="is-size-6-mobile">
+												<p className="is-size-6-mobile">
 													Generate
 												</p>
 											</button>
@@ -141,8 +145,8 @@ function FormComponent(props) {
 			{/* End of main section */}
 
 			{/* Footer */}
-			<footer class="footer">
-				<div class="content has-text-centered">
+			<footer className="footer">
+				<div className="content has-text-centered">
 					<p>
 						See the source code on
 						<a href="https://github.com/matthuynh/url-shortener"> GitHub</a>.

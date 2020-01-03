@@ -11,7 +11,7 @@ const urlChecker = require('../utils/inputSanitization');
  * @description Given a long URL, create short URL
  */
 router.post('/shorten', async(req, res) => {
-  const longUrl = req.body.longURL;
+  var longUrl = req.body.longURL;
   const useCustomShortURL = req.body.useCustomShortURL;
   const baseUrl = config.get('baseUrl');
   console.log(req.body);
@@ -75,6 +75,13 @@ router.post('/shorten', async(req, res) => {
       else {
         console.log("The long URL does not exist in Mongo yet");
         const shortUrl = baseUrl + '/' + urlHash;
+        
+        //If the longUrl doesnt have http, https, or ftp
+        var pattern = /^((http|https|ftp):\/\/)/;
+        if(!pattern.test(url)) {
+          longUrl = "http://" + longUrl;
+        }
+
         // Insert the generated URL into Mongo
         url = new url_schema({
           urlHash,

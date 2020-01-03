@@ -43,9 +43,8 @@ class App extends React.Component {
 
     // User entered in a valid long URL 
     const responseBody = await response.json();
-    // console.log(responseBody);
+    console.log(responseBody);
     if (response.status === 200) this.setState({ shortURL: responseBody.shortUrl});
-    // Some other error
     else {
       if (responseBody.errorCode === 1001) this.setState({ resultErrorMessage: "Your custom short URL '" + this.state.customShortURL + "' is in an invalid format. Try another short URL."});
       else if (responseBody.errorCode === 1002) this.setState({ resultErrorMessage: "Your custom short URL already exists. Try another short URL." });

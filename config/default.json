@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb://localhost:27017/url_shortener",
+    "mongoURI": "mongodb+srv://newOmar:trunks14@cluster0-xjinx.azure.mongodb.net/test?retryWrites=true&w=majority",
     "baseUrl": "http://localhost:5000"
 }
