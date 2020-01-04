@@ -3,7 +3,6 @@ import FormComponent from "./FormComponent";
 import ResultComponent from './ResultComponent';
 import './App.css';
 
-
 class App extends React.Component {
   constructor() {
       super()
@@ -11,14 +10,16 @@ class App extends React.Component {
           longURL: "",
           shortURL: "",
           submitted: false,
-          useExtraOptions: false,
+          usePreview: false,
           useCustomShortURL: false,
           customShortURL: "",
-          resultErrorMessage: ""
+          resultErrorMessage: "",
+          hasCopiedToClipboard: false,
       }
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleReturnToHome = this.handleReturnToHome.bind(this);
+      this.handleClickCopy = this.handleClickCopy.bind(this);
   }
   
   // Given a longURL, get a shortURL from backend
@@ -34,7 +35,8 @@ class App extends React.Component {
         body: JSON.stringify({ 
           longURL: this.state.longURL,
           useCustomShortURL: this.state.useCustomShortURL,
-          customShortURL: this.state.customShortURL
+          customShortURL: this.state.customShortURL,
+          usePreview: this.state.usePreview
         }),
       });
     } catch (error) {
@@ -80,11 +82,19 @@ class App extends React.Component {
       longURL: "",
       shortURL: "",
       submitted: false,
-      useExtraOptions: false,
+      usePreview: false,
       useCustomShortURL: false,
       customShortURL: "",
-      resultErrorMessage: ""
+      resultErrorMessage: "",
+      hasCopiedToClipboard: false
       });
+  }
+
+  // User clicks on 'Copy to Clipboard' button
+  handleClickCopy() {
+    this.setState({
+      hasCopiedToClipboard: true
+    })
   }
   
   render() {
@@ -106,6 +116,7 @@ class App extends React.Component {
         <ResultComponent
           data={this.state}
           handleReturnToHome={this.handleReturnToHome}
+          handleClickCopy={this.handleClickCopy}
         />
       </div>
     )

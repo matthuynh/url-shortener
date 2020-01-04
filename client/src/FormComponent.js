@@ -8,134 +8,172 @@ function FormComponent(props) {
 			<section className="section">
 				<div className="container">
 					{/* Page logo and title */}
-					<section className="section">
-						<h1 className="title has-text-centered"> Shrinkly </h1>
+					<section class="section" id="title-section">
+						<h1 class="title has-text-centered"> Shrinkly </h1>
+						{/* <h6 class="subtitle is-6 has-text-centered">
+							{" "}
+							a URL shortener{" "}
+						</h6> */}
 					</section>
 					{/* End of page logo and title */}
 
 					{/* Input form */}
 					<section className="section">
 						<form>
-							<section className="section">
-								<div className="container">
-									<div className="columns is-mobile is-gapless">
-										<div className="column is-9">
+							<section class="section">
+								<div class="container">
+									<div class="columns is-mobile is-gapless">
+										{/* Left column */}
+										<div class="column is-9">
 											{/* Textfield input for long URL */}
 											<input
-												className="input is-primary is-medium"
+												class="input is-primary is-medium is-small-mobile"
 												type="text"
 												name="longURL"
-												placeholder="Enter the URL that you want to shorten"
+												placeholder="Enter a URL to shrink"
 												value={props.data.longURL}
 												onChange={props.handleChange}
 											/>
-											{/* Checkbox for "More options" */}
-											<label className="checkbox">
-												<input
-													type="checkbox"
-													name="useExtraOptions"
-													onChange={
-														props.handleChange
-													}
-													checked={
-														props.data
-															.useExtraOptions
-													}
-												/>{" "}
-												More options
-											</label>
-											<br />
-											{/* Checkbox input for custom short URL textfield */}
-											<label>
-												<input
-													type="checkbox"
-													name="useCustomShortURL"
-													onChange={
-														props.handleChange
-													}
-													checked={
-														props.data
-															.useCustomShortURL
-													}
-													style={{
-														display:
-															!props.data
-																.useExtraOptions &&
-															"none"
-													}}
-												/>
-												<span
-													style={{
-														display:
-															!props.data
-																.useExtraOptions &&
-															"none"
-													}}
-												>
-													{" "}
-													Generate custom URL
-												</span>
-											</label>
-											<br />
-
-											{/* Textfield input for "Use Custom Short URL" option */}
-											<div className="field has-addons">
-												<p className="control">
-													<span
-														className="button is-small is-static"
-														style={{
-															display:
-																(!props.data
-																	.useCustomShortURL ||
-																!props.data
-																	.useExtraOptions) &&
-																"none"
-														}}
-													>
-														https://localhost:3000/
-													</span>
-												</p>
-												<p className="control is-fullwidth is-expanded">
-													<input
-														className="input is-small is-expanded is-fullwidth"
-														type="text"
-														name="customShortURL"
-														placeholder="Enter the custom URL that wish to use"
-														value={
-															props.data
-																.customShortURL
-														}
-														onChange={
-															props.handleChange
-														}
-														style={{
-															display:
-																(!props.data
-																	.useCustomShortURL ||
-																!props.data
-																	.useExtraOptions) &&
-																"none"
-														}}
-													/>
-												</p>
-											</div>
+											<nav class="level is-mobile">
+												{/* Checkbox input for custom short URL textfield */}
+												<div class="level-left">
+													<label class="checkbox">
+														<input
+															type="checkbox"
+															name="useCustomShortURL"
+															onChange={
+																props.handleChange
+															}
+															checked={
+																props.data
+																	.useCustomShortURL
+															}
+														/>{" "}
+														Custom URL
+													</label>
+												</div>
+												{/* Checkbox input for "Preview" option */}
+												<div class="level-right">
+													<label class="checkbox">
+														Preview
+														{"  "}
+														<input
+															type="checkbox"
+															name="usePreview"
+															onChange={
+																props.handleChange
+															}
+															checked={
+																props.data
+																	.usePreview
+															}
+														/>
+													</label>
+												</div>
+											</nav>
 										</div>
-										{/* End of column for textfield and extra options */}
-										{/* Input for Submit button */}
-										<div className="column is-3">
+										{/* End of left column for main textfield and extra options */}
+										{/* Start of right column for Submit button */}
+										<div class="column is-3">
 											<button
 												className="button is-primary is-medium is-fullwidth"
 												type="button"
 												onClick={props.handleSubmit}
 											>
-												<p className="is-size-6-mobile">
-													Generate
+												<p class="is-size-6-mobile">
+													Shrink!
 												</p>
 											</button>
 										</div>
-										{/* End of Input for Submit button */}
+										{/* End of right column for Submit button */}
 									</div>
 								</div>
+								<br />
+								{/* Textfield input for "Use Custom Short URL" option */}
+								<div class="field has-addons">
+									<p class="control">
+										<span
+											class="button is-small is-static"
+											style={{
+												display:
+													!props.data
+														.useCustomShortURL &&
+													"none"
+											}}
+										>
+											https://localhost:3000/
+										</span>
+										<br />
+									</p>
+									<p class="control is-fullwidth is-expanded">
+										<input
+											class="input is-small is-expanded is-fullwidth"
+											type="text"
+											name="customShortURL"
+											placeholder="<insert custom URL>"
+											value={props.data.customShortURL}
+											onChange={props.handleChange}
+											style={{
+												display:
+													!props.data
+														.useCustomShortURL &&
+													"none"
+											}}
+										/>
+									</p>
+								</div>
+								{/* End of textfield input for "Use Custom Short URL" option */}
+								{/* Info box that displays custom URL specifications */}
+								<div
+									class="notification"
+									id="custom-url-notification"
+									style={{
+										display:
+											!props.data.useCustomShortURL &&
+											"none"
+									}}
+								>
+									<p>
+										Your custom URL must have a length
+										between 4 to 20, inclusive, and contain
+										at least 4 alphanumeric characters (a-z,
+										A-Z, 0-9).
+									</p>
+
+									<p>
+										{" "}
+										Example:{" "}
+										<a href="https://localhost:3000/helloworld">
+											https://localhost:3000/helloworld
+										</a>
+									</p>
+								</div>
+								{/* End of info box that displays custom URL specifications */}
+								{/* Info box that explains what Preview is */}
+								<div
+									class="notification"
+									id="preview-notification"
+									style={{
+										display:
+											!props.data.usePreview && "none"
+									}}
+								>
+									<p>
+										Users will be re-directed to an
+										intermediary landing page that displays
+										the designated long URL. This gives
+										users peace of mind as they can verify
+										the URL before continuing.
+									</p>
+									<p>
+										{" "}
+										Example:{" "}
+										<a href="https://localhost:3000/preview/helloworld">
+											https://localhost:3000/preview/helloworld
+										</a>
+									</p>
+								</div>
+								{/* End of info box that explains what Preview is */}
 							</section>
 						</form>
 					</section>
@@ -143,15 +181,23 @@ function FormComponent(props) {
 				</div>
 			</section>
 			{/* End of main section */}
-
 			{/* Footer */}
-			<footer className="footer">
-				<div className="content has-text-centered">
-					<p>
-						See the source code on
-						<a href="https://github.com/matthuynh/url-shortener"> GitHub</a>.
-					</p>
-				</div>
+			<footer class="footer content has-text-centered">
+				<p>
+					Made with{" "}
+					{
+						<span role="img" aria-label="coffee">
+							☕
+						</span>
+					}
+				</p>
+				<p>
+					See the source code on
+					<a href="https://github.com/matthuynh/url-shortener">
+						{" "}
+						GitHub
+					</a>
+				</p>
 			</footer>
 		</main>
 	);
