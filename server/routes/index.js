@@ -26,13 +26,18 @@ router.get("/:hash", async (req, res) => {
 			// return res.status(404).json('No url found');
 			const theHtml = `
 				<html>
-				<head><title>Shrinkly Error</title></head>
-				<body>
-				<h1>Error 404</h1>
-				<div id="reactele">{{{reactele}}}</div>
-				<script src="/app.js" charset="utf-8"></script>
-				<script src="/vendor.js" charset="utf-8"></script>
-				</body>
+					<head>
+						<title>404 Error</title>
+						<meta charset="utf-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1">
+						<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+						<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+					</head>
+					<body>
+						<div id="reactele">{{{reactele}}}</div>
+						<script src="/app.js" charset="utf-8"></script>
+						<script src="/vendor.js" charset="utf-8"></script>
+					</body>
 				</html>
 				`;
 			const hbsTemplate = hbs.compile(theHtml);
@@ -51,34 +56,32 @@ router.get("/:hash", async (req, res) => {
  * @description   Display a preview of the URL to the user before redirecting to the original URL
  */
 router.get("/preview/:hash", async (req, res) => {
-	// TODO
-	
 	let errorBool;
 	let short;
-	let message;
 	try {
+		// Check if the short URL exists in the database
 		const url = await url_schema.findOne({ urlHash: req.params.hash });
 		if (url) {
 			errorBool = false;
 			short = url.longUrl;
-			message = "Preview";
 		} else {
-			// // console.log(url);
-			// return res.redirect(config.get("baseUrl"));
-			// // return res.status(404).json('No url found');
 			errorBool = true;
 			short = "";
-			message = "Shrinkly Error";
 		}
 		const theHtml = `
 		<html>
-		<head><title>Shrinkly Server!</title></head>
-		<body>
-		<h1>${message}</h1>
-		<div id="reactele">{{{reactele}}}</div>
-		<script src="/app.js" charset="utf-8"></script>
-		<script src="/vendor.js" charset="utf-8"></script>
-		</body>
+			<head>
+				<title>Link Preview</title>
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+				<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+			</head>
+			<body>
+				<div id="reactele">{{{reactele}}}</div>
+				<script src="/app.js" charset="utf-8"></script>
+				<script src="/vendor.js" charset="utf-8"></script>
+			</body>
 		</html>
 		`;
 		const hbsTemplate = hbs.compile(theHtml);
