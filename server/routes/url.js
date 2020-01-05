@@ -11,22 +11,17 @@ const urlChecker = require('../utils/inputSanitization');
  * @description Given a long URL, create short URL
  */
 router.post('/shorten', async(req, res) => {
-  var longUrl = req.body.longURL;
+  let  longUrl = req.body.longURL;
   const useCustomShortURL = req.body.useCustomShortURL;
   const baseUrl = config.get('baseUrl');
-  const prev = req.body.usePreview;
+  const usePreview = req.body.usePreview;
   console.log(req.body);
 
-  //If the longUrl doesnt have http, https, or ftp
-  var pattern = /^((http|https|ftp):\/\/)/;
+  // Prepend http if the longUrl doesnt have http, https, or ftp
+  const pattern = /^((http|https|ftp):\/\/)/;
   if(!pattern.test(longUrl)) {
     longUrl = "http://" + longUrl;
   }
-  
-  // let longUrl = req.body;
-  // longUrl = longUrl.toLowerCase();
-  // console.log("Request body is");
-  // console.log(req.body);
 
   // Verify that the base URL is valid
   if (!validUrl.isUri(baseUrl)) {
@@ -76,7 +71,7 @@ router.post('/shorten', async(req, res) => {
       // The long URL already exists in Mongo, and the user DOESN'T input a custom short URL. Return the short URL
       if (url && !useCustomShortURL) {
         console.log("The long URL exists in Mongo");
-        if(prev){
+        if(usePreview){
           url.shortUrl = url.shortUrl.slice(0, baseUrl.length + 1) + 'preview/' + url.shortUrl.slice(baseUrl.length + 1);
         }
         console.log(url);
@@ -97,7 +92,7 @@ router.post('/shorten', async(req, res) => {
           date: new Date()
         });
         await url.save();
-        if(prev){
+        if(usePreview){
           url.shortUrl = url.shortUrl.slice(0, baseUrl.length + 1) + 'preview/' + url.shortUrl.slice(baseUrl.length + 1);
         }
         res.json(url);

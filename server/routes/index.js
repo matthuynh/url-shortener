@@ -1,13 +1,13 @@
 // Redirects short URLs to long URLs
 
-import App from "../RedirectPages/errorpage";
+import App from "../RedirectPages/errorPage";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import hbs from "handlebars";
 
 const express = require("express");
 const router = express.Router();
-const config = require("config");
+// const config = require("config");
 const url_schema = require("../models/url");
 
 /**

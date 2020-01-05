@@ -10,9 +10,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 // Define Express middleware routes
-app.use('/', require('./routes/index'));
-app.use('/preview', require('./routes/index'));
-app.use('/api/url', require('./routes/url'));
+app.use('/', require('./server/routes/index'));
+app.use('/preview', require('./server/routes/index'));
+app.use('/api/url', require('./server/routes/url'));
 
 const PORT = 5000;
 app.listen(PORT, function() {
