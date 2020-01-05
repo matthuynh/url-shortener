@@ -101,7 +101,7 @@ class App extends React.Component {
     // By default, renders the home page to the user
     if (!this.state.submitted) {
       return (
-        <div>
+        <div class="bigDiv">
           <FormComponent 
             handleChange={this.handleChange}
             data={this.state}
@@ -112,7 +112,7 @@ class App extends React.Component {
     }
     // Display result to user. They can choose to input another long URL 
     return (
-      <div>
+      <div class="bigDiv">
         <ResultComponent
           data={this.state}
           handleReturnToHome={this.handleReturnToHome}

@@ -1,3 +1,9 @@
+html, body, main, section, .bigDiv,#root{
+  height:100%;
+  min-height: 100%;
+}
+
+
 /* Customize margin for the <level> Bulma element (holds the two checkboxes) */
 .level:not(:last-child) {
   margin-bottom: 0.5rem;
@@ -46,4 +52,11 @@
 
 input::placeholder {
   font-size: 0.9em;
+}
+
+footer {
+  clear: both;
+  position: relative;
+  height: 200px;
+  margin-top: -200px;
 }
