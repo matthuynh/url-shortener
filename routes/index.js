@@ -1,4 +1,10 @@
 // Redirects short URLs to long URLs
+
+import App from "../RedirectPages/errorpage";
+import React from "react";
+import { renderToString } from "react-dom/server";
+import hbs from "handlebars";
+
 const express = require("express");
 const router = express.Router();
 const config = require("config");
@@ -12,12 +18,27 @@ router.get("/:hash", async (req, res) => {
 	try {
 		const url = await url_schema.findOne({ urlHash: req.params.hash });
 		if (url) {
-      if (url.longUrl )
 			return res.redirect(url.longUrl);
-		} else {
+		}
+		else {
 			// console.log(url);
 			return res.redirect(config.get("baseUrl"));
 			// return res.status(404).json('No url found');
+			const theHtml = `
+				<html>
+				<head><title>My First SSR</title></head>
+				<body>
+				<h1>My First Server Side Render</h1>
+				<div id="reactele">{{{reactele}}}</div>
+				<script src="/app.js" charset="utf-8"></script>
+				<script src="/vendor.js" charset="utf-8"></script>
+				</body>
+				</html>
+				`;
+			const hbsTemplate = hbs.compile(theHtml);
+			const reactComp = renderToString(<App error={false}/>);
+			const htmlToSend = hbsTemplate({ reactele: reactComp });
+			res.send(htmlToSend);
 		}
 	} catch (err) {
 		console.error(err);
@@ -31,6 +52,43 @@ router.get("/:hash", async (req, res) => {
  */
 router.get("/preview/:hash", async (req, res) => {
 	// TODO
+	const theHtml = `
+	<html>
+	<head><title>My First SSR</title></head>
+	<body>
+	<h1>My First Server Side Render</h1>
+	<div id="reactele">{{{reactele}}}</div>
+	<script src="/app.js" charset="utf-8"></script>
+	<script src="/vendor.js" charset="utf-8"></script>
+	</body>
+	</html>
+	`;
+	let errorBool;
+	let short;
+	console.log(req.params);
+	try {
+		const url = await url_schema.findOne({ shortUrl: "http://localhost:5000/b2X2rTxY" });
+		if (url) {
+			errorBool = false;
+			short = url.shortUrl;
+		} else {
+			// // console.log(url);
+			// return res.redirect(config.get("baseUrl"));
+			// // return res.status(404).json('No url found');
+			errorBool = true;
+			short = ""
+		}
+		console.log(url);
+		const hbsTemplate = hbs.compile(theHtml);
+		const reactComp = renderToString(<App error={errorBool} shortUrl={short}/>);
+		const htmlToSend = hbsTemplate({ reactele: reactComp });
+		res.send(htmlToSend);
+
+	} catch (err) {
+		console.error(err);
+		res.status(500).json("Server error");
+	}
+	
 });
 
 module.exports = router;

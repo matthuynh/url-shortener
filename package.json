@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "client": "cd client && npm start",
-    "server": "nodemon server",
+    "server": "nodemon --exec babel-node server",
     "dev": "concurrently -kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "repository": {
@@ -19,13 +19,22 @@
   },
   "homepage": "https://github.com/matthuynh/url-shortener#readme",
   "devDependencies": {
-    "nodemon": "^2.0.2",
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "concurrently": "^5.0.2",
     "config": "^3.2.4",
-    "concurrently": "^5.0.2"
+    "nodemon": "^2.0.2"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "handlebars": "^4.5.3",
     "jest": "^24.9.0",
     "mongoose": "^5.8.3",
     "react": "^16.12.0",
