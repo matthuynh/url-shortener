@@ -17,18 +17,18 @@ const url_schema = require("../models/url");
 router.get("/:hash", async (req, res) => {
 	try {
 		const url = await url_schema.findOne({ urlHash: req.params.hash });
+
 		if (url) {
 			return res.redirect(url.longUrl);
 		}
 		else {
 			// console.log(url);
-			return res.redirect(config.get("baseUrl"));
 			// return res.status(404).json('No url found');
 			const theHtml = `
 				<html>
-				<head><title>My First SSR</title></head>
+				<head><title>Shrinkly Error</title></head>
 				<body>
-				<h1>My First Server Side Render</h1>
+				<h1>Error 404</h1>
 				<div id="reactele">{{{reactele}}}</div>
 				<script src="/app.js" charset="utf-8"></script>
 				<script src="/vendor.js" charset="utf-8"></script>
@@ -36,7 +36,7 @@ router.get("/:hash", async (req, res) => {
 				</html>
 				`;
 			const hbsTemplate = hbs.compile(theHtml);
-			const reactComp = renderToString(<App error={false}/>);
+			const reactComp = renderToString(<App error={true}/>);
 			const htmlToSend = hbsTemplate({ reactele: reactComp });
 			res.send(htmlToSend);
 		}
@@ -52,33 +52,35 @@ router.get("/:hash", async (req, res) => {
  */
 router.get("/preview/:hash", async (req, res) => {
 	// TODO
-	const theHtml = `
-	<html>
-	<head><title>My First SSR</title></head>
-	<body>
-	<h1>My First Server Side Render</h1>
-	<div id="reactele">{{{reactele}}}</div>
-	<script src="/app.js" charset="utf-8"></script>
-	<script src="/vendor.js" charset="utf-8"></script>
-	</body>
-	</html>
-	`;
+	
 	let errorBool;
 	let short;
-	console.log(req.params);
+	let message;
 	try {
-		const url = await url_schema.findOne({ shortUrl: "http://localhost:5000/b2X2rTxY" });
+		const url = await url_schema.findOne({ urlHash: req.params.hash });
 		if (url) {
 			errorBool = false;
-			short = url.shortUrl;
+			short = url.longUrl;
+			message = "Preview";
 		} else {
 			// // console.log(url);
 			// return res.redirect(config.get("baseUrl"));
 			// // return res.status(404).json('No url found');
 			errorBool = true;
-			short = ""
+			short = "";
+			message = "Shrinkly Error";
 		}
-		console.log(url);
+		const theHtml = `
+		<html>
+		<head><title>Shrinkly Server!</title></head>
+		<body>
+		<h1>${message}</h1>
+		<div id="reactele">{{{reactele}}}</div>
+		<script src="/app.js" charset="utf-8"></script>
+		<script src="/vendor.js" charset="utf-8"></script>
+		</body>
+		</html>
+		`;
 		const hbsTemplate = hbs.compile(theHtml);
 		const reactComp = renderToString(<App error={errorBool} shortUrl={short}/>);
 		const htmlToSend = hbsTemplate({ reactele: reactComp });

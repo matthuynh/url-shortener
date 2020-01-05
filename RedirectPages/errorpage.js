@@ -8,7 +8,7 @@ class Error extends React.Component {
             <div>
                 {this.props.error &&
                     <h2>
-                        Error 404 this page is not found
+                        This page is not found
                         <a href={baseUrl}> Go back </a>
                     </h2>
                 }
