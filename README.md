@@ -14,9 +14,9 @@
 
 ---
 
-<!-- <p align="center"> Try out a live version <a href="https://google.com">here! </a>
+<p align="center"> Try out a live version <a href="http://shrinkly-url-shortener.herokuapp.com/">here! Note that since we are hosting the service using Heroku's Free Plan, the service may take a few moments to load up initially.</a>
     <br> 
-</p> -->
+</p>
 
 ## 📝 Table of Contents
 - [Screenshots](#screenshots)
@@ -38,7 +38,7 @@ You can click on each screenshot to expand them.
 ## 🧐 About <a name = "about"></a>
 Shrinkly is a URL shortener service. Users can input a long URL into Shrinkly and the service will provide a randomly generated shortened version of that URL. Users may also choose to create their own custom shortened URL.
 
-<!-- Try out a live version [here!](https://google.com) </a> -->
+Try out a live version [here!](https://google.com) Note that since we are hosting the service using Heroku's Free Plan, the service may take a few moments to load up initially.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
