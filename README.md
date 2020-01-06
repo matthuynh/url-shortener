@@ -22,7 +22,7 @@
 - [Screenshots](#screenshots)
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
+<!-- - [Deployment](#deployment) -->
 <!-- - [Tests](#tests) -->
 - [Built Using](#built_using)
 - [Authors](#authors)
@@ -30,10 +30,10 @@
 
 ## 📷 Screenshots <a name="screenshots"></a>
 You can click on each screenshot to expand them.
-<img src="https://user-images.githubusercontent.com/19757152/71788253-9662ca00-2fee-11ea-8dd1-76225284cd82.png" width="800">
-<img src="https://user-images.githubusercontent.com/19757152/71788251-88ad4480-2fee-11ea-9160-273b49d33199.png" width="800">
-<img src="https://user-images.githubusercontent.com/19757152/71788259-a8dd0380-2fee-11ea-9d17-57202a1db321.png" width="800">
-<img src="https://user-images.githubusercontent.com/19757152/71788262-b72b1f80-2fee-11ea-924e-c2cdf36f2e2d.png" width="800">
+<img src="https://user-images.githubusercontent.com/19757152/71788253-9662ca00-2fee-11ea-8dd1-76225284cd82.png" width="900">
+<img src="https://user-images.githubusercontent.com/19757152/71788251-88ad4480-2fee-11ea-9160-273b49d33199.png" width="900">
+<img src="https://user-images.githubusercontent.com/19757152/71788259-a8dd0380-2fee-11ea-9d17-57202a1db321.png" width="900">
+<img src="https://user-images.githubusercontent.com/19757152/71788262-b72b1f80-2fee-11ea-924e-c2cdf36f2e2d.png" width="900">
 
 ## 🧐 About <a name = "about"></a>
 Shrinkly is a URL shortener service. Users can input a long URL into Shrinkly and the service will provide a randomly generated shortened version of that URL. Users may also choose to create their own custom shortened URL.

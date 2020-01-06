@@ -19,7 +19,7 @@ function FormComponent(props) {
 
 					{/* Input form */}
 					<section className="section">
-						<form>
+						<form onSubmit={props.handleSubmit}>
 							<section class="section">
 								<div class="container">
 									<div class="columns is-mobile is-gapless">
@@ -77,8 +77,8 @@ function FormComponent(props) {
 										<div class="column is-3">
 											<button
 												className="button is-primary is-medium is-fullwidth"
-												type="button"
-												onClick={props.handleSubmit}
+												type="submit"
+												// onClick={props.handleSubmit}
 											>
 												<p class="is-size-6-mobile">
 													Shrink!
@@ -135,16 +135,14 @@ function FormComponent(props) {
 								>
 									<p>
 										Your custom URL must have a length
-										between 4 to 20, inclusive, and contain
-										at least 4 alphanumeric characters (a-z,
-										A-Z, 0-9).
+										between 4 to 20, inclusive. It can contain alphanumeric characters, a dash, and an underscore (a-z, A-Z, 0-9, -, _).
 									</p>
 
 									<p>
 										{" "}
 										Example:{" "}
-										<a href="https://localhost:3000/helloworld">
-											https://localhost:3000/helloworld
+										<a href="https://shrinkly-url-shortener.herokuapp.com/helloworld">
+										https://shrinkly-url-shortener.herokuapp.com/helloworld
 										</a>
 									</p>
 								</div>
@@ -168,8 +166,8 @@ function FormComponent(props) {
 									<p>
 										{" "}
 										Example:{" "}
-										<a href="https://localhost:3000/preview/helloworld">
-											https://localhost:3000/preview/helloworld
+										<a href="https://shrinkly-url-shortener.herokuapp.com/preview/helloworld">
+										https://shrinkly-url-shortener.herokuapp.com/preview/helloworld
 										</a>
 									</p>
 								</div>

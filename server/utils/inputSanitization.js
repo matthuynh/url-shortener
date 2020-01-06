@@ -7,8 +7,8 @@ function validateLongURL(longURL) {
 
 // Check to see if a user's custom short URL is valid
 function validateShortURLHash(shortURL) {
-  let regex = /[0-9a-zA-Z]+/
-  return (shortURL.length >= 4 && regex.test(shortURL))
+  let regex = /[0-9a-zA-Z-_]+/
+  return (shortURL.length >= 4 && shortURL.length <= 20 && regex.test(shortURL))
 }
 
 module.exports = {
