@@ -8,10 +8,16 @@ class Error extends React.Component {
 	render() {
 		return (
 			<main>
-				<div>
+				<div style={{
+								height: "100%",
+								minHeight: "100%"
+							}}>
 					{/* 404 Section */}
 					{this.props.error && (
-						<section className="section">
+						<section className="section" style={{
+														height: "100%",
+														minHeight: "100%"
+													}}>
 							<div
 								className="container has-text-centered is-desktop"
 								style={{
@@ -41,7 +47,10 @@ class Error extends React.Component {
 					{/* End of 404 section */}
 					{/* Redirect section */}
 					{!this.props.error && (
-						<section className="section">
+						<section className="section" style={{
+														height: "100%",
+														minHeight: "100%"
+													}}>
 							<div
 								className="container has-text-centered is-desktop"
 								style={{
@@ -73,7 +82,12 @@ class Error extends React.Component {
 					)}
 					{/* End of redirect section */}
 					{/* Footer */}
-					<footer className="footer content has-text-centered">
+					<footer className="footer content has-text-centered" style={{
+																				marginTop: "-200px",
+																				clear: "both",
+																				position: "relative",
+																				height: "200px"
+																			}}>
 						<p>
 							Made with{" "}
 							{
