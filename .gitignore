@@ -1,4 +1,7 @@
 notes.txt
+./config/default.json
+./config/production.json
+
 
 # testing
 **/coverage

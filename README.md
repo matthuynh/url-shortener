@@ -14,27 +14,31 @@
 
 ---
 
-<p align="center"> Try out a live version <a href="https://google.com">here! </a>
+<!-- <p align="center"> Try out a live version <a href="https://google.com">here! </a>
     <br> 
-</p>
+</p> -->
 
 ## 📝 Table of Contents
 - [Screenshots](#screenshots)
 - [About](#about)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
-- [Tests](#tests)
+<!-- - [Tests](#tests) -->
 - [Built Using](#built_using)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
 
 ## 📷 Screenshots <a name="screenshots"></a>
-<img src="https://user-images.githubusercontent.com/19757152/71742078-90be8600-2e2e-11ea-86f7-ee736c64ca07.PNG" width="400">
+
+<img src="https://user-images.githubusercontent.com/19757152/71788253-9662ca00-2fee-11ea-8dd1-76225284cd82.png" width="600">
+<img src="https://user-images.githubusercontent.com/19757152/71788251-88ad4480-2fee-11ea-9160-273b49d33199.png" width="600">
+<img src="https://user-images.githubusercontent.com/19757152/71788259-a8dd0380-2fee-11ea-9d17-57202a1db321.png" width="600">
+<img src="https://user-images.githubusercontent.com/19757152/71788262-b72b1f80-2fee-11ea-924e-c2cdf36f2e2d.png" width="600">
 
 ## 🧐 About <a name = "about"></a>
 Shrinkly is a URL shortener service. Users can input a long URL into Shrinkly and the service will provide a randomly generated shortened version of that URL. Users may also choose to create their own custom shortened URL.
 
-Try out a live version [here!](https://google.com) </a>
+<!-- Try out a live version [here!](https://google.com) </a> -->
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
@@ -75,13 +79,12 @@ These instructions will get you a copy of the project up and running on your loc
     - The client should start on your localhost on port 3000. To view in your browser, navigate to `http://localhost:3000`
 
 
-## 🔧 Running the tests <a name = "tests"></a>
+<!-- ## 🔧 Running the tests <a name = "tests"></a>
 - FINISH THIS
 This application has a suite of automated tests that provide smoke testing and sanity checks.
-To run these tests, do `$ npm test` in the root directory of the project
+To run these tests, do `$ npm test` in the root directory of the project -->
 
 ## 🚀 Deployment <a name = "deployment"></a>
-- FINISH THIS
 Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
