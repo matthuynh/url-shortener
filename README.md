@@ -14,7 +14,7 @@
 
 ---
 
-<p align="center"> Try out a live version <a href="http://shrinkly-url-shortener.herokuapp.com/">here! Note that since we are hosting the service using Heroku's Free Plan, the service may take a few moments to load up initially.</a>
+<p align="center"> Try out a live version <a href="http://shrinkly-url-shortener.herokuapp.com/">here!</a> Note that since we are hosting the service using Heroku's Free Plan, the service may take a few moments to load up initially.
     <br> 
 </p>
 
