@@ -14,8 +14,6 @@ router.post('/shorten', async(req, res) => {
   const useCustomShortURL = req.body.useCustomShortURL;
   const baseUrl = process.env.baseUrl;
   const usePreview = req.body.usePreview;
-  console.log(req.body);
-
   // Prepend http if the longUrl doesnt have http, https, or ftp
   const pattern = /^((http|https|ftp):\/\/)/;
   if(!pattern.test(longUrl)) {
@@ -73,7 +71,6 @@ router.post('/shorten', async(req, res) => {
         if(usePreview){
           url.shortUrl = url.shortUrl.slice(0, baseUrl.length + 1) + 'preview/' + url.shortUrl.slice(baseUrl.length + 1);
         }
-        console.log(url);
         res.json(url);
       }
       // The long URL does not exist yet in Mongo, or the user has chosen to input a custom short URL
