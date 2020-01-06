@@ -1,7 +1,7 @@
 import React from "react";
 
 const config = require("config");
-const baseUrl = config.get("clientUrl");
+const baseUrl = config.get("baseUrl");
 
 class Error extends React.Component {
 	render() {

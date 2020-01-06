@@ -1,0 +1,5 @@
+{
+    "mongoURI": "mongodb+srv://newOmar:trunks14@cluster0-xjinx.azure.mongodb.net/test?retryWrites=true&w=majority",
+    "baseUrl": "http://localhost:5000",
+    "port": 5000
+}
