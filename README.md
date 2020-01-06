@@ -29,11 +29,11 @@
 - [Acknowledgments](#acknowledgement)
 
 ## 📷 Screenshots <a name="screenshots"></a>
-
-<img src="https://user-images.githubusercontent.com/19757152/71788253-9662ca00-2fee-11ea-8dd1-76225284cd82.png" width="600">
-<img src="https://user-images.githubusercontent.com/19757152/71788251-88ad4480-2fee-11ea-9160-273b49d33199.png" width="600">
-<img src="https://user-images.githubusercontent.com/19757152/71788259-a8dd0380-2fee-11ea-9d17-57202a1db321.png" width="600">
-<img src="https://user-images.githubusercontent.com/19757152/71788262-b72b1f80-2fee-11ea-924e-c2cdf36f2e2d.png" width="600">
+You can click on each screenshot to expand them.
+<img src="https://user-images.githubusercontent.com/19757152/71788253-9662ca00-2fee-11ea-8dd1-76225284cd82.png" width="800">
+<img src="https://user-images.githubusercontent.com/19757152/71788251-88ad4480-2fee-11ea-9160-273b49d33199.png" width="800">
+<img src="https://user-images.githubusercontent.com/19757152/71788259-a8dd0380-2fee-11ea-9d17-57202a1db321.png" width="800">
+<img src="https://user-images.githubusercontent.com/19757152/71788262-b72b1f80-2fee-11ea-924e-c2cdf36f2e2d.png" width="800">
 
 ## 🧐 About <a name = "about"></a>
 Shrinkly is a URL shortener service. Users can input a long URL into Shrinkly and the service will provide a randomly generated shortened version of that URL. Users may also choose to create their own custom shortened URL.
@@ -84,8 +84,8 @@ These instructions will get you a copy of the project up and running on your loc
 This application has a suite of automated tests that provide smoke testing and sanity checks.
 To run these tests, do `$ npm test` in the root directory of the project -->
 
-## 🚀 Deployment <a name = "deployment"></a>
-Add additional notes about how to deploy this on a live system.
+<!-- ## 🚀 Deployment <a name = "deployment"></a>
+Add additional notes about how to deploy this on a live system. -->
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [MongoDB](https://www.mongodb.com/) - Database
