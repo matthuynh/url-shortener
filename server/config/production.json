@@ -1,5 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://newOmar:trunks14@cluster0-xjinx.azure.mongodb.net/test?retryWrites=true&w=majority",
-    "baseUrl": "https://shrinkly-url-shortener.herokuapp.com/",
-    "port": 5001
-}

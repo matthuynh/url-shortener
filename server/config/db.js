@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI'); // connection string
+require("dotenv").config()
+const db = process.env.mongodburi; // connection string
 
 // Connect to database
 const connect_db = async () => {

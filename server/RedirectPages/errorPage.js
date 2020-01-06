@@ -1,7 +1,8 @@
 import React from "react";
 
-const config = require("config");
-const baseUrl = config.get("baseUrl");
+require("dotenv").config()
+
+const baseUrl = process.env.baseUrl;
 
 class Error extends React.Component {
 	render() {

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const validUrl = require('valid-url');
 const shortID = require('shortid');
-const config = require('config');
 const url_schema = require('../models/url');
 const urlChecker = require('../utils/inputSanitization');
 
@@ -13,7 +12,7 @@ const urlChecker = require('../utils/inputSanitization');
 router.post('/shorten', async(req, res) => {
   let  longUrl = req.body.longURL;
   const useCustomShortURL = req.body.useCustomShortURL;
-  const baseUrl = config.get('baseUrl');
+  const baseUrl = process.env.baseUrl;
   const usePreview = req.body.usePreview;
   console.log(req.body);
 
