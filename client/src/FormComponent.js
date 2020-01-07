@@ -101,7 +101,7 @@ function FormComponent(props) {
 													"none"
 											}}
 										>
-											https://localhost:3000/
+											https://shrinkly-url-shortener.herokuapp.com/
 										</span>
 										<br />
 									</p>
