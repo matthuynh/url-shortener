@@ -3,7 +3,7 @@
  <img width=300 height=100 src="https://user-images.githubusercontent.com/19757152/71739910-c06a8f80-2e28-11ea-9d3a-0a72175bf8c4.png" alt="Project logo"></a>
 </p>
 
-<p align="center"> A URL shortener</p>
+<p align="center"> A URL shortener. Built by <a href="https://github.com/matthuynh">@matthuynh</a> and <a href="https://github.com/omardahir99">@omardahir99</a></p>
 
 <div align="center">
 
@@ -14,7 +14,7 @@
 
 ---
 
-<p align="center"> Try out a live version <a href="http://shrinkly-url-shortener.herokuapp.com/">here!</a> Note that since we are hosting the service using Heroku's Free Plan, the service may take a few moments to load up initially.
+<p align="center"> Try out a live version <a href="https://shrinkly-url-shortener.herokuapp.com/">here!</a> Note that since we are hosting the service using Heroku's Free Plan, the service may take a few moments to load up initially.
     <br> 
 </p>
 
